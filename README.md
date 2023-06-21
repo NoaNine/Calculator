@@ -1,24 +1,26 @@
 # Task5
 
-ѕроект створено √авлицьким ќлександром в навчальних ц≥л€х на курс≥ FoxmindEd.
+Проект створено Гавлицьким Олександром в навчальних цілях на курсі FoxmindEd.
 
-ќпис задач≥:
-Implement two modes for application УCalculatorФ:
+Опис задачі:
+Implement two modes for application “Calculator”:
 
-1) Users work in a console application with simple operations (without brackets). Operations should be executed with math priority (* / + -)
+1) Users work in a console application with simple operations (without brackets). 
+Operations should be executed with math priority (* / + -)
 
 
 Examples:
 
 Input -> Output
 
-У2+2*3Ф -> У8Ф
+“2+2*3” -> “8”
 
-У2/0Ф -> Exception. Divide by zero.
+“2/0” -> Exception. Divide by zero.
 
 
 
-2) Work with files. Application read data from file line by line. Implement calculation with brackets. Each line should be calculated and the result written to a different file.
+2) Work with files. Application read data from file line by line. 
+Implement calculation with brackets. Each line should be calculated and the result written to a different file.
 
 
 
@@ -42,4 +44,8 @@ Output file
 
 2+15/3+4*2 = 15
 
-Noties: implement parsing, calculation and math operation priorities without using third party libraries or components, which returns calculation result (like DataTable.Compute etc)
+
+
+Noties: implement parsing, calculation and 
+math operation priorities without using third party libraries or components, 
+which returns calculation result (like DataTable.Compute etc)
