@@ -6,12 +6,12 @@ namespace Calculator
 {
     public class Analizator
     {
-        private NumberFormatInfo _numberFormatInfo;
+        //private NumberFormatInfo _numberFormatInfo;
 
-        public Analizator(NumberFormatInfo numberFormatInfo)
-        {
-            _numberFormatInfo = numberFormatInfo;
-        }
+        //public Analizator(NumberFormatInfo numberFormatInfo)
+        //{
+        //    _numberFormatInfo = numberFormatInfo;
+        //}
 
         public List<Lexeme> LexicalAnalize(string expression)
         {
