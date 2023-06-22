@@ -9,12 +9,12 @@ namespace Calculator
 {
     public class Analyzator
     {
-        //private NumberFormatInfo _numberFormatInfo;
+        private char _decimalSeparator;
 
-        //public Analizator(NumberFormatInfo numberFormatInfo)
-        //{
-        //    _numberFormatInfo = numberFormatInfo;
-        //}
+        public Analyzator(char decimalSeparator)
+        {
+            _decimalSeparator = decimalSeparator;
+        }
 
         public List<Lexeme> LexicalAnalyze(string expression)
         {
@@ -62,6 +62,7 @@ namespace Calculator
                         throw new ArgumentException();
                 }
             }
+            CheckBalancedBracket(lexemeExpression);
             return lexemeExpression;
         }
 
@@ -79,8 +80,28 @@ namespace Calculator
                 }
                 token = expression[position];
             }
-            while (Char.IsNumber(token) || token == '.');
+            while (Char.IsNumber(token) || token == _decimalSeparator);
             return stringBuilder.ToString();
+        }
+
+        private void CheckBalancedBracket(List<Lexeme> lexemes)
+        {
+            int balancedBracket = 0;
+            foreach(Lexeme lexeme in lexemes)
+            {
+                if (lexeme.Type == LexemeType.LeftBracket)
+                {
+                    balancedBracket++;
+                }
+                if (lexeme.Type == LexemeType.RightBracket)
+                {
+                    balancedBracket--;
+                }
+            }
+            if (balancedBracket != 0)
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
