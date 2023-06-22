@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Analizator.cs" />
+    <Compile Include="Analyzator.cs" />
     <Compile Include="Math.cs" />
     <Compile Include="Models\Lexeme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
