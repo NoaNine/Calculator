@@ -57,9 +57,18 @@
 
         [DataTestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void LexicalAnalize_ThrowArgumentExeption()
+        public void LexicalAnalize_NotValidValue()
         {
             var input = "2+a-1";
+            var analizator = new Analyzator('.');
+            var result = analizator.LexicalAnalyze(input);
+        }
+
+        [DataTestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void LexicalAnalize_NotBalancedBrackets()
+        {
+            var input = "2+((4-1)";
             var analizator = new Analyzator('.');
             var result = analizator.LexicalAnalyze(input);
         }

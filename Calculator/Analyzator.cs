@@ -62,7 +62,7 @@ namespace Calculator
                         throw new ArgumentException();
                 }
             }
-            CheckBalancedBracket(lexemeExpression);
+            CheckBalancedBrackets(lexemeExpression);
             return lexemeExpression;
         }
 
@@ -84,21 +84,21 @@ namespace Calculator
             return stringBuilder.ToString();
         }
 
-        private void CheckBalancedBracket(List<Lexeme> lexemes)
+        private void CheckBalancedBrackets(List<Lexeme> lexemes)
         {
-            int balancedBracket = 0;
+            int balancedBrackets = 0;
             foreach(Lexeme lexeme in lexemes)
             {
                 if (lexeme.Type == LexemeType.LeftBracket)
                 {
-                    balancedBracket++;
+                    balancedBrackets++;
                 }
                 if (lexeme.Type == LexemeType.RightBracket)
                 {
-                    balancedBracket--;
+                    balancedBrackets--;
                 }
             }
-            if (balancedBracket != 0)
+            if (balancedBrackets != 0)
             {
                 throw new ArgumentException();
             }
