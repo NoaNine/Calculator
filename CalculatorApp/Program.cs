@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CalculatorApp
+﻿namespace CalculatorApp
 {
     public class Program
     {

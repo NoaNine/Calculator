@@ -2,13 +2,13 @@
 {
     public enum LexemeType
     {
-        LeftBracket,
-        RightBracket,
-        Plus,
-        Minus,
-        Multiplication,
-        Division,
-        Number
+        LeftBracket = 0,
+        RightBracket = 0,
+        Plus = 1,
+        Minus = 1,
+        Multiplication = 2,
+        Division = 2,
+        Number = 3
     }
 
     public class Lexeme

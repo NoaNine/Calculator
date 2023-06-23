@@ -60,8 +60,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="File\" />
     <Folder Include="OutputFile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="File\expressions.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Calculator\Calculator.csproj">
