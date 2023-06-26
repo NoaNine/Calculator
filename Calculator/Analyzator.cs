@@ -5,7 +5,7 @@ using Calculator.Models;
 
 namespace Calculator
 {
-    public class Analyzator
+    public class Analyzator : IAnalyzator
     {
         private char _decimalSeparator;
 
@@ -57,7 +57,7 @@ namespace Calculator
                             lexemeExpression.Add(new Lexeme(LexemeType.Number, number));
                             continue;
                         }
-                        throw new ArgumentException();
+                        throw new ArgumentException("Invalid character input");
                 }
             }
             CheckBalancedBrackets(lexemeExpression);
@@ -67,25 +67,34 @@ namespace Calculator
         private string NumberHandler(ref int position, string expression)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            char token = expression[position];
-            do
+            //char token = expression[position];
+            //do
+            //{
+            //    stringBuilder.Append(token);
+            //    position++;
+            //    if (position >= expression.Length)
+            //    {
+            //        break;
+            //    }
+            //    token = expression[position];
+            //}
+            //while (Char.IsNumber(token) || token == _decimalSeparator);
+            while(IsNumber(position, expression))
             {
+                char token = expression[position];
                 stringBuilder.Append(token);
                 position++;
-                if (position >= expression.Length)
-                {
-                    break;
-                }
-                token = expression[position];
             }
-            while (Char.IsNumber(token) || token == _decimalSeparator);
             return stringBuilder.ToString();
         }
+
+        private bool IsNumber(int position, string expression) =>
+            position < expression.Length && (Char.IsNumber(expression[position]) || (expression[position] == _decimalSeparator));
 
         private void CheckBalancedBrackets(List<Lexeme> lexemes)
         {
             int balancedBrackets = 0;
-            foreach(Lexeme lexeme in lexemes)
+            foreach (Lexeme lexeme in lexemes)
             {
                 if (lexeme.Type == LexemeType.LeftBracket)
                 {
@@ -98,7 +107,7 @@ namespace Calculator
             }
             if (balancedBrackets != 0)
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Not balanced brackets");
             }
         }
     }

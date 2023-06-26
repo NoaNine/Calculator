@@ -7,20 +7,18 @@ namespace Calculator
     {
         public double Calculate(List<Lexeme> lexemeExpression)
         {
-            //Dictionary<int, string> operatorsPriority = new Dictionary<int, string>()
-            //{
-            //    {1, "+"},
-            //    {2, "-"},
-            //    {3, "*"},
-            //    {4, "/"}
-            //};
+            Dictionary<LexemeType, int> operatorsPriority = new Dictionary<LexemeType, int>()
+            {
+                {LexemeType.Number, 0},
+                {LexemeType.Plus, 1},
+                {LexemeType.Minus, 1},
+                {LexemeType.Multiplication, 2},
+                {LexemeType.Division, 2},
+                {LexemeType.LeftBracket, 3},
+                {LexemeType.RightBracket, 3}
+            };
             Stack<Lexeme> operands = new Stack<Lexeme>();
             Stack<Lexeme> operators = new Stack<Lexeme>();
-            return 0;
-        }
-
-        private int GetOperatorPriority(LexemeType lexemeType)
-        {
             return 0;
         }
     }

@@ -42,9 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analyzator.cs" />
+    <Compile Include="Interface\IAnalyzator.cs" />
     <Compile Include="Math.cs" />
     <Compile Include="Models\Lexeme.cs" />
+    <Compile Include="Models\LexemeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
