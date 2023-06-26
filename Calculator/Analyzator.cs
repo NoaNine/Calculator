@@ -67,18 +67,6 @@ namespace Calculator
         private string NumberHandler(ref int position, string expression)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            //char token = expression[position];
-            //do
-            //{
-            //    stringBuilder.Append(token);
-            //    position++;
-            //    if (position >= expression.Length)
-            //    {
-            //        break;
-            //    }
-            //    token = expression[position];
-            //}
-            //while (Char.IsNumber(token) || token == _decimalSeparator);
             while(IsNumber(position, expression))
             {
                 char token = expression[position];

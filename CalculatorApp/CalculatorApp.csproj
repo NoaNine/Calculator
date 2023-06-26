@@ -66,6 +66,9 @@
     <Content Include="File\expressions.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Calculator\Calculator.csproj">
       <Project>{83a8b744-e40e-4fe7-b04f-62fc3fecc8f2}</Project>
       <Name>Calculator</Name>
