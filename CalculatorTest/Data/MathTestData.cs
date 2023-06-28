@@ -34,7 +34,7 @@
                         new Lexeme(LexemeType.Plus, "+"),
                         new Lexeme(LexemeType.Number, "4"),
                         new Lexeme(LexemeType.Minus, "-"),
-                        new Lexeme(LexemeType.Number, "8"),
+                        new Lexeme(LexemeType.Number, "6"),
                         new Lexeme(LexemeType.EndOfExpression, "")
                     },
                     0.0
