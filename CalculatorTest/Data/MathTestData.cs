@@ -14,7 +14,8 @@
                         new Lexeme(LexemeType.Plus, "+"),
                         new Lexeme(LexemeType.Number, "4"),
                         new Lexeme(LexemeType.Minus, "-"),
-                        new Lexeme(LexemeType.Number, "4")
+                        new Lexeme(LexemeType.Number, "4"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     },
                     2.0
                 }
@@ -33,7 +34,8 @@
                         new Lexeme(LexemeType.Plus, "+"),
                         new Lexeme(LexemeType.Number, "4"),
                         new Lexeme(LexemeType.Minus, "-"),
-                        new Lexeme(LexemeType.Number, "8")
+                        new Lexeme(LexemeType.Number, "8"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     },
                     0.0
                 }
@@ -58,7 +60,8 @@
                         new Lexeme(LexemeType.Number, "1"),
                         new Lexeme(LexemeType.RightBracket, ")"),
                         new Lexeme(LexemeType.Minus, "-"),
-                        new Lexeme(LexemeType.Number, "7")
+                        new Lexeme(LexemeType.Number, "7"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     },
                     -1.0
                 }
@@ -77,7 +80,8 @@
                         new Lexeme(LexemeType.Plus, "+"),
                         new Lexeme(LexemeType.Number, "4.22222"),
                         new Lexeme(LexemeType.Multiplication, "*"),
-                        new Lexeme(LexemeType.Number, "9.23453")
+                        new Lexeme(LexemeType.Number, "9.23453"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     },
                     41.8842172566
                 }
@@ -94,7 +98,8 @@
                     {
                         new Lexeme(LexemeType.Number, "44572.22222"),
                         new Lexeme(LexemeType.Multiplication, "*"),
-                        new Lexeme(LexemeType.Number, "9946.23453")
+                        new Lexeme(LexemeType.Number, "9946.23453"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     },
                     443325775.723397
                 }
@@ -111,7 +116,8 @@
                     {
                         new Lexeme(LexemeType.Number, "44578432.22222"),
                         new Lexeme(LexemeType.Multiplication, "*"),
-                        new Lexeme(LexemeType.Number, "9768946.23453")
+                        new Lexeme(LexemeType.Number, "9768946.23453"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     },
                     435484307598507
                 }
@@ -128,7 +134,8 @@
                     {
                         new Lexeme(LexemeType.Number, "5"),
                         new Lexeme(LexemeType.Division, "/"),
-                        new Lexeme(LexemeType.Number, "0")
+                        new Lexeme(LexemeType.Number, "0"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     }
                 }
             };
