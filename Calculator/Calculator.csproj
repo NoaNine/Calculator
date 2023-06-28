@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analyzator.cs" />
+    <Compile Include="CultureSettings.cs" />
+    <Compile Include="Interface\ICultureSettings.cs" />
     <Compile Include="Interface\IAnalyzator.cs" />
     <Compile Include="Math.cs" />
     <Compile Include="Models\Lexeme.cs" />
