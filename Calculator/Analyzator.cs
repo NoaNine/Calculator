@@ -18,7 +18,7 @@ namespace Calculator
         {
             if (string.IsNullOrEmpty(expression))
             {
-                throw new ArgumentNullException("The value can`t be null or empty");
+                throw new ArgumentNullException("The value can`t be null or empty.");
             }
             List<Lexeme> lexemeExpression = new List<Lexeme>();
             int position = 0;

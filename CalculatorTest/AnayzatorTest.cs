@@ -72,5 +72,23 @@
             var analizator = new Analyzator('.');
             var result = analizator.LexicalAnalyze(input);
         }
+
+        [DataTestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void LexicalAnalize_IsNullValue()
+        {
+            string? input = null;
+            var analizator = new Analyzator('.');
+            var result = analizator.LexicalAnalyze(input);
+        }
+
+        [DataTestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void LexicalAnalize_IsEmptyValue()
+        {
+            var input = "";
+            var analizator = new Analyzator('.');
+            var result = analizator.LexicalAnalyze(input);
+        }
     }
 }
