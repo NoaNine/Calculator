@@ -8,6 +8,7 @@
         Minus,
         Multiplication,
         Division,
-        Number
+        Number,
+        EndOfExpression
     }
 }

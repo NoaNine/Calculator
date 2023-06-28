@@ -16,6 +16,10 @@ namespace Calculator
 
         public List<Lexeme> LexicalAnalyze(string expression)
         {
+            if (string.IsNullOrEmpty(expression))
+            {
+                throw new ArgumentNullException("The value can`t be null or empty");
+            }
             List<Lexeme> lexemeExpression = new List<Lexeme>();
             int position = 0;
             while (position < expression.Length)
@@ -26,38 +30,42 @@ namespace Calculator
                     case '+':
                         lexemeExpression.Add(new Lexeme(LexemeType.Plus, Char.ToString(token)));
                         position++;
-                        continue;
+                        break;
                     case '-':
                         lexemeExpression.Add(new Lexeme(LexemeType.Minus, Char.ToString(token)));
                         position++;
-                        continue;
+                        break;
                     case '/':
                         lexemeExpression.Add(new Lexeme(LexemeType.Division, Char.ToString(token)));
                         position++;
-                        continue;
+                        break;
                     case '*':
                         lexemeExpression.Add(new Lexeme(LexemeType.Multiplication, Char.ToString(token)));
                         position++;
-                        continue;
+                        break;
                     case '(':
                         lexemeExpression.Add(new Lexeme(LexemeType.LeftBracket, Char.ToString(token)));
                         position++;
-                        continue;
+                        break;
                     case ')':
                         lexemeExpression.Add(new Lexeme(LexemeType.RightBracket, Char.ToString(token)));
                         position++;
-                        continue;
+                        break;
                     case ' ':
                         position++;
-                        continue;
+                        break;
                     default:
                         if (Char.IsNumber(token))
                         {
                             string number = NumberHandler(ref position, expression);
                             lexemeExpression.Add(new Lexeme(LexemeType.Number, number));
-                            continue;
+                            break;
                         }
                         throw new ArgumentException("Invalid character input");
+                }
+                if (position == expression.Length)
+                {
+                    lexemeExpression.Add(new Lexeme(LexemeType.EndOfExpression, ""));
                 }
             }
             CheckBalancedBrackets(lexemeExpression);

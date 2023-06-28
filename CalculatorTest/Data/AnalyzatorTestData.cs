@@ -17,7 +17,8 @@
                         new Lexeme(LexemeType.Number, "3"),
                         new Lexeme(LexemeType.Multiplication, "*"),
                         new Lexeme(LexemeType.Number, "3"),
-                        new Lexeme(LexemeType.RightBracket, ")")
+                        new Lexeme(LexemeType.RightBracket, ")"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     }
                 }
             };
@@ -38,7 +39,8 @@
                         new Lexeme(LexemeType.Number, "30"),
                         new Lexeme(LexemeType.Multiplication, "*"),
                         new Lexeme(LexemeType.Number, "35"),
-                        new Lexeme(LexemeType.RightBracket, ")")
+                        new Lexeme(LexemeType.RightBracket, ")"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     }
 
                 }
@@ -60,7 +62,8 @@
                         new Lexeme(LexemeType.Number, "3"),
                         new Lexeme(LexemeType.Multiplication, "*"),
                         new Lexeme(LexemeType.Number, "3.6876"),
-                        new Lexeme(LexemeType.RightBracket, ")")
+                        new Lexeme(LexemeType.RightBracket, ")"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     }
 
                 }
@@ -73,7 +76,7 @@
             {
                 new object[]
                 {
-                    " 2+ ( 3*3 ) ",
+                    " 2+ ( 3*3 )   ",
                     new List<Lexeme>
                     {
                         new Lexeme(LexemeType.Number, "2"),
@@ -82,9 +85,9 @@
                         new Lexeme(LexemeType.Number, "3"),
                         new Lexeme(LexemeType.Multiplication, "*"),
                         new Lexeme(LexemeType.Number, "3"),
-                        new Lexeme(LexemeType.RightBracket, ")")
+                        new Lexeme(LexemeType.RightBracket, ")"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
                     }
-
                 }
             };
         }
