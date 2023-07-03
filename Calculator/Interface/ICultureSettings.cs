@@ -1,8 +1,10 @@
-﻿namespace Calculator
+﻿using System.Globalization;
+
+namespace Calculator
 {
     public interface ICultureSettings
     {
-        string Culture { get; }
+        CultureInfo Culture { get; }
         char GetDecimalSeparator { get; }
     }
 }
