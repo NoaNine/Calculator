@@ -19,19 +19,15 @@ namespace Calculator
         private IAnalyzator _analyzator;
         private ICultureSettings _cultureSettings;
 
-        public Math() 
-        {
-
-        }
-
         public Math(IAnalyzator analyzator, ICultureSettings cultureSettings)
         {
             _analyzator = analyzator;
             _cultureSettings = cultureSettings;
         }
 
-        public double Calculate(List<Lexeme> lexemeExpression)
+        public double Calculate(string Expression)
         {
+            List<Lexeme> lexemeExpression = _analyzator.LexicalAnalyze(Expression);
             if (lexemeExpression.Count == 2)
             {
                 return double.TryParse(lexemeExpression[0].Value, NumberStyles.Number, _cultureSettings.Culture, out double value) ? value : throw new ArgumentException("This is not operand.");
