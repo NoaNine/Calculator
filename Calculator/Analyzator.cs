@@ -7,11 +7,11 @@ namespace Calculator
 {
     public class Analyzator : IAnalyzator
     {
-        private char _decimalSeparator;
+        private ICultureSettings _cultureSettings;
 
-        public Analyzator(char decimalSeparator)
+        public Analyzator(ICultureSettings cultureSettings)
         {
-            _decimalSeparator = decimalSeparator;
+            _cultureSettings = cultureSettings;
         }
 
         public List<Lexeme> LexicalAnalyze(string expression)
@@ -85,7 +85,7 @@ namespace Calculator
         }
 
         private bool IsNumber(int position, string expression) =>
-            position < expression.Length && (Char.IsNumber(expression[position]) || (expression[position] == _decimalSeparator));
+            position < expression.Length && (Char.IsNumber(expression[position]) || (expression[position] == _cultureSettings.GetDecimalSeparator));
 
         private void CheckBalancedBrackets(List<Lexeme> lexemes)
         {

@@ -61,7 +61,7 @@ namespace CalculatorApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Greting. Welcome to the Calculator Application..
         /// </summary>
         internal static string Greeting {
             get {
@@ -70,7 +70,7 @@ namespace CalculatorApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Enter an expression of any length..
         /// </summary>
         internal static string Instruction {
             get {

@@ -1,6 +1,7 @@
 ﻿using Calculator.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Calculator
 {
@@ -18,22 +19,18 @@ namespace Calculator
         private IAnalyzator _analyzator;
         private ICultureSettings _cultureSettings;
 
-        public Math()
-        {
-
-        }
-
         public Math(IAnalyzator analyzator, ICultureSettings cultureSettings)
         {
             _analyzator = analyzator;
             _cultureSettings = cultureSettings;
         }
 
-        public double Calculate(List<Lexeme> lexemeExpression)
+        public double Calculate(string Expression)
         {
+            List<Lexeme> lexemeExpression = _analyzator.LexicalAnalyze(Expression);
             if (lexemeExpression.Count == 2)
             {
-                return double.TryParse(lexemeExpression[0].Value, out double value) ? value : throw new ArgumentException("This is not operand.");
+                return double.TryParse(lexemeExpression[0].Value, NumberStyles.Number, _cultureSettings.Culture, out double value) ? value : throw new ArgumentException("This is not operand.");
             }
             foreach (Lexeme lexeme in lexemeExpression)
             {
@@ -42,18 +39,13 @@ namespace Calculator
                     _operands.Push(lexeme);
                     continue;
                 }
-                if (IsEndOfExpression(lexeme))
-                {
-                    Operation();
-                    break;
-                }
                 OperatorHandler(lexeme);
             }
             if (_operands.Count > 1)
             {
                 throw new ArgumentException("Not last operand.");
             }
-            return double.TryParse(_operands.Pop().Value, out double result) ? result : throw new ArgumentException();
+            return double.TryParse(_operands.Pop().Value, NumberStyles.Number, _cultureSettings.Culture, out double result) ? result : throw new ArgumentException();
         }
 
         private void OperatorHandler(Lexeme lexeme)
@@ -63,12 +55,12 @@ namespace Calculator
                 _operators.Pop();
                 return;
             }
-            if (_operators.Count == 0 || IsLeftBracketOrHigerPriority(lexeme, _operators.Peek()))
+            if (!IsEndOfExpression(lexeme) && (_operators.Count == 0 || IsLeftBracketOrHigerPriority(lexeme, _operators.Peek())))
             {
                 _operators.Push(lexeme);
                 return;
             }
-            if (IsRightBracketOrSameOrLowerPriority(lexeme, _operators.Peek()))
+            if (IsEndOfExpression(lexeme) || IsRightBracketOrSameOrLowerPriority(lexeme, _operators.Peek()))
             {
                 Operation();
                 OperatorHandler(lexeme);
@@ -102,7 +94,8 @@ namespace Calculator
             {
                 return true;
             }
-            if ((!_operatorsPriority.TryGetValue(lexeme.Type, out int lexemePriority) | !_operatorsPriority.TryGetValue(firstOperatorInStack.Type, out int firstOperatorInStackPriority)) && 
+            if ((!_operatorsPriority.TryGetValue(lexeme.Type, out int lexemePriority) | 
+                !_operatorsPriority.TryGetValue(firstOperatorInStack.Type, out int firstOperatorInStackPriority)) && 
                 lexeme.Type != LexemeType.LeftBracket)
             {
                 throw new ArgumentException("Key is not found.");
@@ -135,7 +128,8 @@ namespace Calculator
         {
             Lexeme operand1 = _operands.Pop();
             Lexeme operand2 = _operands.Pop();
-            if (!double.TryParse(operand2.Value, out double op2) | !double.TryParse(operand1.Value, out double op1))
+            if (!double.TryParse(operand2.Value, NumberStyles.Number, _cultureSettings.Culture, out double op2) | 
+                !double.TryParse(operand1.Value, NumberStyles.Number, _cultureSettings.Culture, out double op1))
             {
                 throw new ArgumentException("Not decimal number");
             }
@@ -147,7 +141,8 @@ namespace Calculator
         {
             Lexeme operand1 = _operands.Pop();
             Lexeme operand2 = _operands.Pop();
-            if (!double.TryParse(operand2.Value, out double op2) | !double.TryParse(operand1.Value, out double op1))
+            if (!double.TryParse(operand2.Value, NumberStyles.Number, _cultureSettings.Culture, out double op2) | 
+                !double.TryParse(operand1.Value, NumberStyles.Number, _cultureSettings.Culture, out double op1))
             {
                 throw new ArgumentException("Not decimal number");
             }
@@ -159,7 +154,8 @@ namespace Calculator
         {
             Lexeme operand1 = _operands.Pop();
             Lexeme operand2 = _operands.Pop();
-            if (!double.TryParse(operand2.Value, out double op2) | !double.TryParse(operand1.Value, out double op1))
+            if (!double.TryParse(operand2.Value, NumberStyles.Number, _cultureSettings.Culture, out double op2) | 
+                !double.TryParse(operand1.Value, NumberStyles.Number, _cultureSettings.Culture, out double op1))
             {
                 throw new ArgumentException("Not decimal number");
             }
@@ -175,7 +171,8 @@ namespace Calculator
         {
             Lexeme operand1 = _operands.Pop();
             Lexeme operand2 = _operands.Pop();
-            if (!double.TryParse(operand2.Value, out double op2) | !double.TryParse(operand1.Value, out double op1))
+            if (!double.TryParse(operand2.Value, NumberStyles.Number, _cultureSettings.Culture, out double op2) 
+                | !double.TryParse(operand1.Value, NumberStyles.Number, _cultureSettings.Culture, out double op1))
             {
                 throw new ArgumentException("Not decimal number");
             }

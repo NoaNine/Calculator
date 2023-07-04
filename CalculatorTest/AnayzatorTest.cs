@@ -3,13 +3,18 @@
     [TestClass]
     public class AnayzatorTest
     {
+        private readonly Mock<ICultureSettings> _cultureSettingsMock = new Mock<ICultureSettings>();
+        private readonly CultureInfo cultureInfo = new CultureInfo("en-US");
+
         [DataTestMethod]
         [DynamicData(nameof(AnalyzatorTestData.LexicalAnalyze_ConvertToListLexeme_SingleDigitsNumbers_Data), typeof(AnalyzatorTestData), DynamicDataSourceType.Method)]
-        public void LexicalAnalize_ConvertToListLexeme_SingleDigits(string input, List<Lexeme> expected)
+        public void LexicalAnalize_ConvertToListLexeme_SingleDigitsNumbers(string input, List<Lexeme> expected)
         {
-            var analizator = new Analyzator('.');
+            _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
+            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
-            for(int i = 0; i < expected.Count; i++)
+            for (int i = 0; i < expected.Count; i++)
             {
                 Assert.AreEqual(expected[i].Type, result[i].Type);
                 Assert.AreEqual(expected[i].Value, result[i].Value);
@@ -20,7 +25,9 @@
         [DynamicData(nameof(AnalyzatorTestData.LexicalAnalyze_ConvertToListLexeme_MultiDigitNumbers_Data), typeof(AnalyzatorTestData), DynamicDataSourceType.Method)]
         public void LexicalAnalize_ConvertToListLexeme_MultiDigitNumbers(string input, List<Lexeme> expected)
         {
-            var analizator = new Analyzator('.');
+            _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
+            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
             for (int i = 0; i < expected.Count; i++)
             {
@@ -33,7 +40,9 @@
         [DynamicData(nameof(AnalyzatorTestData.LexicalAnalyze_ConvertToListLexeme_DecimalNubmers_Data), typeof(AnalyzatorTestData), DynamicDataSourceType.Method)]
         public void LexicalAnalize_ConvertToListLexeme_DecimalNubmers(string input, List<Lexeme> expected)
         {
-            var analizator = new Analyzator('.');
+            _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
+            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
             for (int i = 0; i < expected.Count; i++)
             {
@@ -46,7 +55,9 @@
         [DynamicData(nameof(AnalyzatorTestData.LexicalAnalyze_ConvertToListLexeme_WithSpaces_Data), typeof(AnalyzatorTestData), DynamicDataSourceType.Method)]
         public void LexicalAnalize_ConvertToListLexeme_WithSpaces(string input, List<Lexeme> expected)
         {
-            var analizator = new Analyzator('.');
+            _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
+            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
             for (int i = 0; i < expected.Count; i++)
             {
@@ -60,7 +71,9 @@
         public void LexicalAnalize_NotValidValue()
         {
             var input = "2+a-1";
-            var analizator = new Analyzator('.');
+            _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
+            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
         }
 
@@ -69,7 +82,9 @@
         public void LexicalAnalize_NotBalancedBrackets()
         {
             var input = "2+((4-1)";
-            var analizator = new Analyzator('.');
+            _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
+            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
         }
 
@@ -78,7 +93,9 @@
         public void LexicalAnalize_IsNullValue()
         {
             string? input = null;
-            var analizator = new Analyzator('.');
+            _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
+            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
         }
 
@@ -87,7 +104,9 @@
         public void LexicalAnalize_IsEmptyValue()
         {
             var input = "";
-            var analizator = new Analyzator('.');
+            _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
+            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
         }
     }
