@@ -2,12 +2,13 @@
 {
     public class MathTestData
     {
-        public static IEnumerable<object[]> Calculate_SimpleExpression()
+        public static IEnumerable<object[]> Calculate_SimpleExpression_Data()
         {
             return new[]
             {
                 new object[]
                 {
+                    "2+4-4",
                     new List<Lexeme>
                     {
                         new Lexeme(LexemeType.Number, "2"),
@@ -22,12 +23,13 @@
             };
         }
 
-        public static IEnumerable<object[]> Calculate_ReturnZero()
+        public static IEnumerable<object[]> Calculate_ReturnZero_Data()
         {
             return new[]
             {
                 new object[]
                 {
+                    "2+4-6",
                     new List<Lexeme>
                     {
                         new Lexeme(LexemeType.Number, "2"),
@@ -42,12 +44,13 @@
             };
         }
 
-        public static IEnumerable<object[]> Calculate_ExpressionWithBracketsPriority()
+        public static IEnumerable<object[]> Calculate_ExpressionWithBracketsPriority_Data()
         {
             return new[]
             {
                 new object[]
                 {
+                    "2+4/(0+1)-7",
                     new List<Lexeme>
                     {
                         new Lexeme(LexemeType.Number, "2"),
@@ -68,12 +71,13 @@
             };
         }
 
-        public static IEnumerable<object[]> Calculate_DecimalNumber()
+        public static IEnumerable<object[]> Calculate_DecimalNumber_Data()
         {
             return new[]
             {
                 new object[]
                 {
+                    "2.894+4.22222*9.23453",
                     new List<Lexeme>
                     {
                         new Lexeme(LexemeType.Number, "2.894"),
@@ -83,17 +87,18 @@
                         new Lexeme(LexemeType.Number, "9.23453"),
                         new Lexeme(LexemeType.EndOfExpression, "")
                     },
-                    41.8842172566
+                    41.884217256599996
                 }
             };
         }
 
-        public static IEnumerable<object[]> Calculate_BigDecimalNumber()
+        public static IEnumerable<object[]> Calculate_BigDecimalNumber_Data()
         {
             return new[]
             {
                 new object[]
                 {
+                    "44572.22222*9946.23453",
                     new List<Lexeme>
                     {
                         new Lexeme(LexemeType.Number, "44572.22222"),
@@ -101,17 +106,18 @@
                         new Lexeme(LexemeType.Number, "9946.23453"),
                         new Lexeme(LexemeType.EndOfExpression, "")
                     },
-                    443325775.723397
+                    443325775.72339725
                 }
             };
         }
 
-        public static IEnumerable<object[]> Calculate_LargeNumber()
+        public static IEnumerable<object[]> Calculate_LargeNumber_Data()
         {
             return new[]
             {
                 new object[]
                 {
+                    "44578432.22222*9768946.23453",
                     new List<Lexeme>
                     {
                         new Lexeme(LexemeType.Number, "44578432.22222"),
@@ -119,17 +125,18 @@
                         new Lexeme(LexemeType.Number, "9768946.23453"),
                         new Lexeme(LexemeType.EndOfExpression, "")
                     },
-                    435484307598507
+                    435484307598506.94
                 }
             };
         }
 
-        public static IEnumerable<object[]> Calculate_DivisionByZero()
+        public static IEnumerable<object[]> Calculate_DivisionByZero_Data()
         {
             return new[]
             {
                 new object[]
                 {
+                    "5/0",
                     new List<Lexeme>
                     {
                         new Lexeme(LexemeType.Number, "5"),
