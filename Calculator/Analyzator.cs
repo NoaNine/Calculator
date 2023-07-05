@@ -85,7 +85,7 @@ namespace Calculator
         }
 
         private bool IsNumber(int position, string expression) =>
-            position < expression.Length && (Char.IsNumber(expression[position]) || (expression[position] == _cultureSettings.GetDecimalSeparator));
+            position < expression.Length && (Char.IsNumber(expression[position]) || (expression[position] == _cultureSettings.DecimalSeparator));
 
         private void CheckBalancedBrackets(List<Lexeme> lexemes)
         {

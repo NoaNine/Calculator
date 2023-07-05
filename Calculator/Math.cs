@@ -19,6 +19,12 @@ namespace Calculator
         private IAnalyzator _analyzator;
         private ICultureSettings _cultureSettings;
 
+        public Math(IAnalyzator analyzator)
+        {
+            _analyzator = analyzator;
+            _cultureSettings = CultureSettings.CurrentSettingsCulture;
+        }
+
         public Math(IAnalyzator analyzator, ICultureSettings cultureSettings)
         {
             _analyzator = analyzator;

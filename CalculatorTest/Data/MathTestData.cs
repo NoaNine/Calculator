@@ -130,6 +130,25 @@
             };
         }
 
+        public static IEnumerable<object[]> Calculate_CheckCurrentCultureDecimalSeparator_Data()
+        {
+            return new[]
+            {
+                new object[]
+                {
+                    "3,4+5,9",
+                    new List<Lexeme>
+                    {
+                        new Lexeme(LexemeType.Number, "3,4"),
+                        new Lexeme(LexemeType.Plus, "+"),
+                        new Lexeme(LexemeType.Number, "5,9"),
+                        new Lexeme(LexemeType.EndOfExpression, "")
+                    },
+                    9.3
+                }
+            };
+        }
+
         public static IEnumerable<object[]> Calculate_DivisionByZero_Data()
         {
             return new[]
