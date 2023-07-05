@@ -11,7 +11,7 @@
         public void LexicalAnalize_ConvertToListLexeme_SingleDigitsNumbers(string input, List<Lexeme> expected)
         {
             _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
-            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            _cultureSettingsMock.SetupGet(x => x.DecimalSeparator).Returns('.');
             var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
             for (int i = 0; i < expected.Count; i++)
@@ -26,7 +26,7 @@
         public void LexicalAnalize_ConvertToListLexeme_MultiDigitNumbers(string input, List<Lexeme> expected)
         {
             _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
-            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            _cultureSettingsMock.SetupGet(x => x.DecimalSeparator).Returns('.');
             var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
             for (int i = 0; i < expected.Count; i++)
@@ -41,7 +41,7 @@
         public void LexicalAnalize_ConvertToListLexeme_DecimalNubmers(string input, List<Lexeme> expected)
         {
             _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
-            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            _cultureSettingsMock.SetupGet(x => x.DecimalSeparator).Returns('.');
             var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
             for (int i = 0; i < expected.Count; i++)
@@ -56,7 +56,7 @@
         public void LexicalAnalize_ConvertToListLexeme_WithSpaces(string input, List<Lexeme> expected)
         {
             _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
-            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            _cultureSettingsMock.SetupGet(x => x.DecimalSeparator).Returns('.');
             var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
             for (int i = 0; i < expected.Count; i++)
@@ -72,7 +72,7 @@
         {
             var input = "2+a-1";
             _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
-            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            _cultureSettingsMock.SetupGet(x => x.DecimalSeparator).Returns('.');
             var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
         }
@@ -83,7 +83,7 @@
         {
             var input = "2+((4-1)";
             _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
-            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            _cultureSettingsMock.SetupGet(x => x.DecimalSeparator).Returns('.');
             var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
         }
@@ -94,7 +94,7 @@
         {
             string? input = null;
             _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
-            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            _cultureSettingsMock.SetupGet(x => x.DecimalSeparator).Returns('.');
             var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
         }
@@ -105,7 +105,7 @@
         {
             var input = "";
             _cultureSettingsMock.SetupGet(x => x.Culture).Returns(cultureInfo);
-            _cultureSettingsMock.SetupGet(x => x.GetDecimalSeparator).Returns('.');
+            _cultureSettingsMock.SetupGet(x => x.DecimalSeparator).Returns('.');
             var analizator = new Analyzator(_cultureSettingsMock.Object);
             var result = analizator.LexicalAnalyze(input);
         }

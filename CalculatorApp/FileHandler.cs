@@ -16,7 +16,7 @@ namespace CalculatorApp
 
         public void SetFileData(double[] results)
         {
-            string path = @"E:\IT Academy\Foxminded\Task5\OutputFile\ExpressionsResults.txt";
+            string path = @"OutputFile\ExpressionsResults.txt";
             string[] strings = Convert(results);
             File.WriteAllLines(path, strings);
         }
