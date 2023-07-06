@@ -1,51 +1,24 @@
-# Task5
+ÐŸÑ€Ð¾ÐµÐºÑ‚ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾ Ð“Ð°Ð²Ð»Ð¸Ñ†ÑŒÐºÐ¸Ð¼ ÐžÐ»ÐµÐºÑÐ°Ð½Ð´Ñ€Ð¾Ð¼ Ð² Ð½Ð°Ð²Ñ‡Ð°Ð»ÑŒÐ½Ð¸Ñ… Ñ†Ñ–Ð»ÑÑ… Ð½Ð° ÐºÑƒÑ€ÑÑ– FoxmindEd.
 
-ðîåêò ñòâîðåíî ƒàâëèöüêèì Žëåêñàíäðîì â íàâ÷àëüíèõ ö´ëßõ íà êóðñ´ FoxmindEd.
+ÐžÐ¿Ð¸Ñ Ð·Ð°Ð´Ð°Ñ‡Ñ–:
+Implement two modes for application â€œCalculatorâ€:
 
-Žïèñ çàäà÷´:
-Implement two modes for application ÒCalculatorÓ:
-
-1) Users work in a console application with simple operations (without brackets). 
-Operations should be executed with math priority (* / + -)
-
-
+1) Users work in a console application with simple operations (without brackets). Operations should be executed with math priority (* / + -)
 Examples:
-
 Input -> Output
+â€œ2+2*3â€ -> â€œ8â€
+â€œ2/0â€ -> Exception. Divide by zero.
 
-Ò2+2*3Ó -> Ò8Ó
-
-Ò2/0Ó -> Exception. Divide by zero.
-
-
-
-2) Work with files. Application read data from file line by line. 
-Implement calculation with brackets. Each line should be calculated and the result written to a different file.
-
-
-
+2) Work with files. Application read data from file line by line. Implement calculation with brackets. Each line should be calculated and the result written to a different file.
 Example:
-
 Input file 
-
 1+2*(3+2)
-
 1+x+4
-
 2+15/3+4*2
 
-
-
-Output file
-
+Output file:
 1+2*(3+2) = 11
-
 1+x+4 = Exception. Wrong input.
-
 2+15/3+4*2 = 15
 
-
-
-Noties: implement parsing, calculation and 
-math operation priorities without using third party libraries or components, 
-which returns calculation result (like DataTable.Compute etc)
+Noties: implement parsing, calculation and math operation priorities without using third party libraries or components, which returns calculation result (like DataTable.Compute etc)
