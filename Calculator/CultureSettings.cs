@@ -11,7 +11,7 @@ namespace Calculator
 
         public CultureSettings(CultureInfo culture)
         {
-            Culture = culture ?? throw new ArgumentNullException();
+            Culture = culture ?? throw new NullReferenceException(nameof(culture));
             DecimalSeparator = char.Parse(Culture.NumberFormat.NumberDecimalSeparator);
         }
     }

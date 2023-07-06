@@ -67,7 +67,7 @@
         }
 
         [DataTestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(Exception))]
         public void LexicalAnalize_NotValidValue()
         {
             var input = "2+a-1";

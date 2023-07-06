@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Calculator.Interface;
 
 namespace Calculator
 {
-    public class Math
+    public class Math2
     {
         private Dictionary<LexemeType, int> _operatorsPriority = new Dictionary<LexemeType, int>()
             {
@@ -18,17 +19,20 @@ namespace Calculator
         private Stack<Lexeme> _operators = new Stack<Lexeme>();
         private IAnalyzator _analyzator;
         private ICultureSettings _cultureSettings;
+        private IOperatorFactory _operatorFactory;
 
-        public Math(IAnalyzator analyzator)
+        public Math2(IAnalyzator analyzator, IOperatorFactory operatorFactory)
         {
             _analyzator = analyzator ?? throw new NullReferenceException(nameof(analyzator));
+            _operatorFactory = operatorFactory ?? throw new NullReferenceException(nameof(operatorFactory));
             _cultureSettings = CultureSettings.CurrentSettingsCulture;
         }
 
-        public Math(IAnalyzator analyzator, ICultureSettings cultureSettings)
+        public Math2(IAnalyzator analyzator, ICultureSettings cultureSettings, IOperatorFactory operatorFactory)
         {
             _analyzator = analyzator ?? throw new NullReferenceException(nameof(analyzator));
             _cultureSettings = cultureSettings ?? throw new NullReferenceException(nameof(cultureSettings));
+            _operatorFactory = operatorFactory ?? throw new NullReferenceException(nameof(operatorFactory));
         }
 
         public double Calculate(string Expression)
@@ -56,7 +60,7 @@ namespace Calculator
 
         private void OperatorHandler(Lexeme lexeme)
         {
-            if(_operators.Count != 0 && IsRigthAndLeftBracket(lexeme, _operators.Peek()))
+            if (_operators.Count != 0 && IsRigthAndLeftBracket(lexeme, _operators.Peek()))
             {
                 _operators.Pop();
                 return;
@@ -76,7 +80,7 @@ namespace Calculator
         private bool IsNumber(Lexeme lexeme) => lexeme.Type == LexemeType.Number;
 
         private bool IsEndOfExpression(Lexeme lexeme) => lexeme.Type == LexemeType.EndOfExpression && _operators.Count != 0;
-        private bool IsRigthAndLeftBracket(Lexeme lexeme, Lexeme firstOperatorInStack) => 
+        private bool IsRigthAndLeftBracket(Lexeme lexeme, Lexeme firstOperatorInStack) =>
             lexeme.Type == LexemeType.RightBracket && firstOperatorInStack.Type == LexemeType.LeftBracket;
 
         private bool IsLeftBracketOrHigerPriority(Lexeme lexeme, Lexeme firstOperatorInStack)
@@ -85,8 +89,8 @@ namespace Calculator
             {
                 return true;
             }
-            if ((!_operatorsPriority.TryGetValue(lexeme.Type, out int lexemePriority) | 
-                !_operatorsPriority.TryGetValue(firstOperatorInStack.Type, out int firstOperatorInStackPriority)) && 
+            if ((!_operatorsPriority.TryGetValue(lexeme.Type, out int lexemePriority) |
+                !_operatorsPriority.TryGetValue(firstOperatorInStack.Type, out int firstOperatorInStackPriority)) &&
                 lexeme.Type != LexemeType.RightBracket)
             {
                 throw new IndexOutOfRangeException("Key is not found.");
@@ -100,8 +104,8 @@ namespace Calculator
             {
                 return true;
             }
-            if ((!_operatorsPriority.TryGetValue(lexeme.Type, out int lexemePriority) | 
-                !_operatorsPriority.TryGetValue(firstOperatorInStack.Type, out int firstOperatorInStackPriority)) && 
+            if ((!_operatorsPriority.TryGetValue(lexeme.Type, out int lexemePriority) |
+                !_operatorsPriority.TryGetValue(firstOperatorInStack.Type, out int firstOperatorInStackPriority)) &&
                 lexeme.Type != LexemeType.LeftBracket)
             {
                 throw new IndexOutOfRangeException("Key is not found.");
@@ -110,7 +114,7 @@ namespace Calculator
         }
 
         private void Operation()
-        { 
+        {
             switch (_operators.Pop().Type)
             {
                 case LexemeType.Minus:
@@ -132,33 +136,37 @@ namespace Calculator
 
         private void Minus()
         {
+            IOperator op = _operatorFactory.CreateOperator(OperatorType.Minus);
             ParseOperand(out double operandA, out double operandB);
-            double result = operandB - operandA;
+            double result = op.Operation(operandB, operandA);
             _operands.Push(new Lexeme(LexemeType.Number, result.ToString()));
         }
 
         private void Plus()
         {
+            IOperator op = _operatorFactory.CreateOperator(OperatorType.Plus);
             ParseOperand(out double operandA, out double operandB);
-            double result = operandB + operandA;
+            double result = op.Operation(operandB, operandA);
             _operands.Push(new Lexeme(LexemeType.Number, result.ToString()));
         }
 
         private void Division()
         {
+            IOperator op = _operatorFactory.CreateOperator(OperatorType.Division);
             ParseOperand(out double operandA, out double operandB);
             if (operandB == 0 || operandA == 0)
             {
-                throw new DivideByZeroException("Error. Divide by zero.");
+                throw new DivideByZeroException("Divide by zero.");
             }
-            double result = operandB / operandA;
+            double result = op.Operation(operandB, operandA);
             _operands.Push(new Lexeme(LexemeType.Number, result.ToString()));
         }
 
         private void Multiplication()
         {
+            IOperator op = _operatorFactory.CreateOperator(OperatorType.Multiplication);
             ParseOperand(out double operandA, out double operandB);
-            double result = operandB * operandA;
+            double result = op.Operation(operandB, operandA);
             _operands.Push(new Lexeme(LexemeType.Number, result.ToString()));
         }
 
@@ -174,3 +182,4 @@ namespace Calculator
         }
     }
 }
+

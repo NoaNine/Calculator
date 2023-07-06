@@ -58,9 +58,18 @@
     <Compile Include="CultureSettings.cs" />
     <Compile Include="Interface\ICultureSettings.cs" />
     <Compile Include="Interface\IAnalyzator.cs" />
+    <Compile Include="Interface\IOperator.cs" />
+    <Compile Include="Interface\IOperatorFactory.cs" />
     <Compile Include="Math.cs" />
+    <Compile Include="Math2.cs" />
+    <Compile Include="Models\Division.cs" />
     <Compile Include="Models\Lexeme.cs" />
     <Compile Include="Models\LexemeType.cs" />
+    <Compile Include="Models\Minus.cs" />
+    <Compile Include="Models\Multiplication.cs" />
+    <Compile Include="Models\OperatorType.cs" />
+    <Compile Include="Models\Plus.cs" />
+    <Compile Include="OperatorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
