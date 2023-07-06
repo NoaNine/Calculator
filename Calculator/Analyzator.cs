@@ -11,7 +11,7 @@ namespace Calculator
 
         public Analyzator(ICultureSettings cultureSettings)
         {
-            _cultureSettings = cultureSettings;
+            _cultureSettings = cultureSettings ?? throw new NullReferenceException(nameof(cultureSettings));
         }
 
         public List<Lexeme> LexicalAnalyze(string expression)
@@ -61,7 +61,7 @@ namespace Calculator
                             lexemeExpression.Add(new Lexeme(LexemeType.Number, number));
                             break;
                         }
-                        throw new ArgumentException("Invalid character input");
+                        throw new Exception("Invalid character input");
                 }
                 if (position == expression.Length)
                 {

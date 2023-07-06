@@ -107,7 +107,7 @@ namespace CalculatorTest
 
         [DataTestMethod]
         [DynamicData(nameof(MathTestData.Calculate_DivisionByZero_Data), typeof(MathTestData), DynamicDataSourceType.Method)]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(DivideByZeroException))]
         public void Calculate_DivisionByZero(string input, List<Lexeme> output)
         {
             _analyzatorMock.Setup(c => c.LexicalAnalyze(input)).Returns(output);
