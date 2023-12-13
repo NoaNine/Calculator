@@ -26,4 +26,5 @@ Output file:
 1+x+4 = Exception. Wrong input.
 2+15/3+4*2 = 15
 
+ 
 Noties: implement parsing, calculation and math operation priorities without using third party libraries or components, which returns calculation result (like DataTable.Compute etc)
