@@ -1,6 +1,11 @@
-Проект створено Гавлицьким Олександром в навчальних цілях на курсі FoxmindEd.
+# FoxmindEd_Task5
+The project was created by Oleksandr Havlytskyi for educational purposes at the FoxmindEd course.
+____
+**Technology or principles have been mastered( or repeated):** Reverse Polish Notation, MsTest, naming conventions.
+____
+**The purpose of the project:** Дearn to parse a string and perform arithmetic operations taking into account the priority of operations.
 
-Опис задачі:
+**Task description:**
 Implement two modes for application “Calculator”:
 
 1) Users work in a console application with simple operations (without brackets). Operations should be executed with math priority (* / + -)
