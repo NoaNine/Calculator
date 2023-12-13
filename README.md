@@ -3,7 +3,7 @@ The project was created by Oleksandr Havlytskyi for educational purposes at the 
 ____
 **Technology or principles have been mastered( or repeated):** Reverse Polish Notation, MsTest, naming conventions.
 ____
-**The purpose of the project:** Дearn to parse a string and perform arithmetic operations taking into account the priority of operations.
+**The purpose of the project:** Learn to parse a string and perform arithmetic operations taking into account the priority of operations.
 
 **Task description:**
 Implement two modes for application “Calculator”:
